@@ -2,6 +2,30 @@ const express = require('express');
 const app = express();
 const port = 5050;
 
+// use public folder
+app.use(express.static('public'));
+
+
+//************************************************************************************** */
+//npm install express-handlebars
+const handlebars = require('express-handlebars');
+
+app.engine('.hbs', handlebars.engine({extname: '.hbs'}));  //engine({extname: '.hbs'}); !
+app.set('view engine', '.hbs');
+app.set('views', './views');
+
+
+app.get('/', (req, res) => {
+    res.render('home');
+    //res.render('home',{ layout: false}); // to fix error if is not present main.hbs to render only this page --> ,{ layout: false});
+});
+
+app.get('/hbstest', (req, res) => {
+    res.render('hbstest');
+    //res.render('home',{ layout: false}); // to fix error if is not present main.hbs to render only this page --> ,{ layout: false});
+});
+
+
 //**************************************************************************************** */
 // routing syntax
 // app.METHOD(PATH, HANDLER);
@@ -9,8 +33,8 @@ const port = 5050;
 
 // GET data
 app.get('/', (req, res) => {
-    res.status(200);
-    res.send('Welcome to backend! (GET)');
+    // res.status(200);
+    // res.send('Welcome to backend! (GET)');
 });
 
 // CREATE data
@@ -35,6 +59,8 @@ app.delete('/', (req, res) => {
 
 //****************************************************************************************** */
 
+// Middleware integration tests
+
 //! 'app.all() for all type requests (get, post, put, delete)'; 
 app.all('/about', (req, res, next) => {
     console.log('Middleware execution..');
@@ -44,7 +70,27 @@ app.all('/about', (req, res, next) => {
     res.send('<h1> first --> Middleware execution.. ---> Show /about page in browser!</h1>');
 });
 
+
+
+//! correct execution of middleware & declared of usage  <--------
+let validateMiddlewareLogicIdNumberIsCorrect = (req, res, next) => {
+    let cartId = Number(req.params.cartId); // convert string to Number, if is not will return 'NaN'
+
+    if(!cartId){
+       return res.send('<h1> Invalid ID of product! </h1>'); //or to -> res.redirect(/404);
+    } else {
+        next(); //call next logic in --> app.get('/product/:cartId',.....);
+    }
+};
+
+app.get('/product/:cartId', validateMiddlewareLogicIdNumberIsCorrect, (req, res, next) => {
+    res.send(`<h1>product is shown whit ID = ${req.params.cartId} !</h1>`);
+});
+
+
+
 //***************************************************************************************** */
+
 
 //test params object
 app.get('/test/:id', (req, res, next) => {
