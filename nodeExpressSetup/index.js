@@ -6,7 +6,7 @@ const port = 5050;
 app.use(express.static('public'));
 
 
-//************************************************************************************** */
+//***************************************************************************************************** */
 //npm install express-handlebars
 const handlebars = require('express-handlebars');
 
@@ -20,13 +20,33 @@ app.get('/', (req, res) => {
     //res.render('home',{ layout: false}); // to fix error if is not present main.hbs to render only this page --> ,{ layout: false});
 });
 
+
 app.get('/hbstest', (req, res) => {
     res.render('hbstest');
     //res.render('home',{ layout: false}); // to fix error if is not present main.hbs to render only this page --> ,{ layout: false});
 });
 
 
-//**************************************************************************************** */
+app.get('/card/:cardId', (req, res) => {
+   res.render('card', { cardId: req.params.cardId });
+});
+
+
+//render data for products
+app.get('/products', (req, res) => {
+    //array of object products
+    const products = [
+        { name: 'box', created: 'US', price: 5 },
+        { name: 'key', created: 'UK', price: 1 },
+        { name: 'apple', created: 'BG', price: 2 }
+    ];
+
+    // passing many objects/products to be render as catalogue 
+    res.render('products' , { products });
+});
+
+
+//***************************************************************************************************** */
 // routing syntax
 // app.METHOD(PATH, HANDLER);
 // test for postman

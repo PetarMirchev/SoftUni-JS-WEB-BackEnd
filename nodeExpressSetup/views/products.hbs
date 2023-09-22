@@ -1,0 +1,41 @@
+<h1>Products page list</h1>
+<div>
+    <ul>
+        {{#each products}}
+            <li>
+                {{name}} - {{created}} - {{price}}
+            </li>
+        {{/each}}
+    </ul>
+</div>
+
+
+<div><p>-------------------------------------------------------</p></div>
+
+
+<div>
+    <p>render by partials template rendering call --> part.hbs</p>
+
+    <ul>
+        {{#each products}}
+            <li>
+                {{>part}}
+            </li>
+        {{/each}}
+    </ul>  
+</div>
+
+
+{{!-- 
+box - US - 5
+key - UK - 1
+apple - BG - 2 
+--}}
+
+<p>---------------------------------------------------------------------------------</p>
+
+{{!-- !!!!! edge case !!!!!!! --}}
+{{!-- if data is passed only by this type  ['Random', 'Gogo', 'Mimi', 'Pepi', 'Jon'] not by object in array the login for renderin will be:
+{{#each name}}
+    <p>{{this}}</p>
+ {{/each}} --}}
