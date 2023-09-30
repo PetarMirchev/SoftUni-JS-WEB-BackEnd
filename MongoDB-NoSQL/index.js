@@ -8,9 +8,9 @@ const Dog1 = require('./models/modelSchema');
 
 //****************************************************************************************************** */
 // mongoose configuration / mongo DB connection
-//const CONNECTION_URL_DB = 'mongodb://atlas-sql-62a5f4cf2131e049ac786d7a-a5xkn.a.query.mongodb.net/DogsDB1?ssl=true&authSource=admin';
+
 MONGO_DB_KEY = 'mongodb+srv://XXXXXXX:XXXXXXX@XXXXXXXXX.yyxpxlu.mongodb.net/?retryWrites=true&w=majority';
-//mongodb+srv://<user>:<password>@<clustermongodbbookingap>.yyxpxlu.mongodb.net/?retryWrites=true&w=majority
+//mongodb+srv://<user>:<password>@<clustermongodb>.yyxpxlu.mongodb.net/?retryWrites=true&w=majority
 
 const connect = async () => {
     try{
