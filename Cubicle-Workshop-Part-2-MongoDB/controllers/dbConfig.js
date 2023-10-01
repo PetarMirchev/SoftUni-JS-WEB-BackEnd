@@ -1,9 +1,5 @@
 const mongoose = require('mongoose');
 
-
-//MONGO_DB_KEY = 'mongodb+srv://PetarMirchev:free-bira@clustermongodbbookingap.yyxpxlu.mongodb.net/?retryWrites=true&w=majority';
-
-
 MONGO_DB_KEY = 'mongodb+srv://PetarMirchev:ela-da-ti-go-dam@cluster0.ejcwtc9.mongodb.net/?retryWrites=true&w=majority';
 
 
