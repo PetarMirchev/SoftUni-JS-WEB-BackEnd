@@ -11,8 +11,9 @@ exports.create = async (cubeData) => {
 };
 
 
-exports.getAll = (search, form, to) => {
-    let filterCubes = [...cubes];
+exports.getAll = async (search, form, to) => {
+    let filterCubes = await Cube.find().lean();
+
 
     if(search) {
         filterCubes = filterCubes.filter((cube) => cube.name.toLowerCase().includes(search.toLowerCase()));
@@ -31,5 +32,12 @@ exports.getAll = (search, form, to) => {
 
 
 exports.getSingleCube = (id) => {
-    return cubes.find( (cube) => cube.id === id);
+    return Cube.findById(id).populate("accessories");
+};
+
+
+exports.attachAccessory = async (cubeId, accessoryIDs) => {
+    const cube = await this.getSingleCube(cubeId);
+    cube.accessories.push(accessoryIDs);
+    return cube.save();
 };
