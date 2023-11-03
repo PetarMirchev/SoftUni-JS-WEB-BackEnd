@@ -1,0 +1,83 @@
+{{!-- 
+
+    <main>
+        <section id="edit-container">
+            <div class="edit-container-info">
+                <h1>Edit Announcement</h1>
+                <form method="POST">
+                    <label>Name:</label>
+                    <input type="text" id="name" name="name" value="{{crypto.name}}">
+                    <label>Image:</label>
+                    <input type="text" id="image" name="image" value="{{crypto.image}}">
+                    <label>Price:</label>
+                    <input type="number" id="price" name="price" value="{{crypto.price}}">
+                    <label>Description:</label>
+                    <textarea name="description" id="description">{{crypto.description}}</textarea>
+                    
+                    
+                    <label>Payment method:</label>
+                    {{!-- <select id="payment" name="payment">
+                        <option value="crypto-wallet">Crypto Wallet</option>
+                        <option value="credit-card">Credit Card</option>
+                        <option value="debit-card">Debit Card</option>
+                        <option value="paypal" selected>PayPal</option>
+                    </select> --}}
+
+                    <select id="payment" name="payment">
+                        {{!-- crypto.dropDown created in dropDownMenuHelper.js --}}
+                        {{#each crypto.dropDown}}
+                            <option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+                        {{/each}}
+                    </select>
+
+
+
+                    <input type="submit" id="btn" value="EDIT"></input>
+                </form>
+            </div>
+        </section>
+    </main> --}}
+
+{{!-- ***************************************************************** --}}
+    {{!-- ----> example whit</textarea> <-------------------------
+<li>
+    <label for="description">Description:</label>
+    <textarea id="description" class="inputFields" name="description">{{crypto.description}}</textarea>
+</li> --}}
+
+
+{{!-- ************************************************************************************************** --}}
+
+
+ <main>
+            <section id="edit-page">
+
+                <article class="edit-page-container">
+                    <form  method="POST" class="edit-page-form">
+                        <h2>Edit an ad</h2>
+
+                        <label for="headline">Headline:</label>
+                        <input type="text" id="headline" name="headline" value="{{crypto.headline}}">
+
+                        <label for="location">Location:</label>
+                        <input type="text" id="location" name="location" value="{{crypto.location}}">
+
+                        <label for="company-name">Company name:</label>
+                        <input type="text" id="company-name" name="companyName" value="{{crypto.companyName}}">
+
+                        <label for="company-description">Company description:</label>
+                        <input type="text" id="company-description" name="companyDescription" value="{{crypto.companyDescription}}">
+
+                        <article class="edit-page-button">
+                            <button class="btn-edit-ads">Edit</button>
+                        </article>
+                    </form>
+
+                    <article class="edit-page-image">
+                        <!-- Do not forget to change the path to the image -->
+                        <img src="/static/img/job.png" alt="image">
+                    </article>
+                </article>
+                
+            </section>
+        </main>

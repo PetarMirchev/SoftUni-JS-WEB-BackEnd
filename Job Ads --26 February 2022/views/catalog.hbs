@@ -1,0 +1,77 @@
+{{!-- 
+
+    <main>
+        <section class="crypto-market">
+            <h1><span>Crypto</span> Trade</h1>
+            {{#if crypto}}
+            <div class="offer-list">
+                {{#each crypto}}
+                <div class="coin">
+                    <div class="coin-img">
+                        <img src="{{image}}"/>
+                    </div>
+                    <div class="coin-info">
+                        <h1>{{name}}</h1>
+                        <p><span>Price: </span>${{price}}</p>
+                        <p><span>Payment: </span>{{payment}}</p>
+                    </div>
+
+                    <a href="/{{_id}}/details" class="btn-details">Details</a>
+                </div>
+                {{/each}}
+            </div>
+
+            {{else}}
+                <div class="no-offer">
+                    <p>There are no crypto offers found!</p>
+                </div>
+            {{/if}}
+        </section>
+    </main> --}}
+
+
+{{!-- ********************************************************************************************** --}}
+
+         <main>
+
+            <section id="all-ads-page">
+                <article class="all-ads-title">
+                    <h1>All ads</h1>
+                </article>
+
+        {{#if items}}    
+                <!--If there are job ads in the database, show each one-->
+            {{#each items}}
+                <article class="all-ads-card">
+                    <article class="all-ads-card-image">
+                        <!-- Do not forget to change the path to the image -->
+                        <img src="/static/img/job-icon1.png" alt="job-icon">
+                    </article>
+
+                    <article class="all-ads-card-content">
+                        <!--You must put the headline value in <h2>-->
+                        <h2>{{headline}}</h2>
+                        <h3>Company Name: {{companyName}}</h3>
+                        <article class="all-ads-card-content-item">
+                            <!-- Do not forget to change the path to the image -->
+                            <img src="/static/img/map-icon.png">
+                            <p>Location {{location}}</p>
+                        </article>
+                    </article>
+
+                    <article class="all-ads-card-buttons">
+                        <a href="/{{_id}}/details" class="btn-details">Details</a> 
+                    </article>
+                </article>
+            {{/each}}
+        {{else}}
+                <!--If there are still no job ads in the database display:-->
+                <article class="not-available-ads">
+                    <h1>No ads created yet.</h1>
+                    <h2>Join and find your perfect workers.</h2>
+                </article>
+         {{/if}}
+            </section>
+        </main>
+
+
