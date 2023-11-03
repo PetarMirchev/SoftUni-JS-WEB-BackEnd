@@ -1,0 +1,1 @@
+exports.SECRET = "mySECRET_HESH_ghasj^&^878-askd-sjdlka-y687d6as";
