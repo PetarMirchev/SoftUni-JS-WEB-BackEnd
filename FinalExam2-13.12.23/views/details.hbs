@@ -1,0 +1,47 @@
+
+ <main>
+        <div class="details-container">
+            <div class="details-container-image">
+                <img src="{{image}}">
+            </div>
+            
+            <div class="details-container-info">
+                <h2>Title: {{title}}</h2>
+                <h3>Type: {{type}}</h3>
+                <h3>Certificate: {{certificate}}</h3>
+                <h3>Price: €{{price}}</h3>
+                <h3>By: {{userOwner.email}}</h3>
+
+                    {{#if participantsUsers}} 
+                        <!--If there are sign up users-->
+                        <h4>Signed By: {{participantsUsers.length}}  </h4>
+                    {{else}}
+                        <!--If there are no sign up users-->
+                        <h4>Nobody has signed in for this course yet</h4>
+                    {{/if}}
+            </div>
+
+            <div class="details-container-content">
+                <p>{{description}}</p>
+            </div>
+            <div class="btn-container">
+                {{#if isAuthenticated}}
+                    {{#if isOwner}}
+                        <!-- Only for registered user and creator of the course-->
+                        <a href="/{{_id}}/edit">Edit</a>
+                        <a href="/{{_id}}/delete">Delete</a>
+                    {{/if}}
+
+                    {{#unless isOwner}}
+                        {{#if isBuyer}}
+                            <!-- logged in user who has already sign up for the course-->
+                            <p class="sign-up">You've already signed up for this course!</p>            
+                        {{else}}
+                            <!-- logged in user who has not yet sign up for the course-->
+                            <a href="/{{_id}}/buy">Sign up</a>
+                        {{/if}}
+                    {{/unless}}
+                {{/if}}
+            </div>
+        </div>
+    </main>
